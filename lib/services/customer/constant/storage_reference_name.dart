@@ -1,0 +1,1 @@
+const customerProfileImageStorageName = "customer-profile-img";

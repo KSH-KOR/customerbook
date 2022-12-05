@@ -1,0 +1,3 @@
+enum CustomerDisplayOrder{
+  ascending, descending,
+}
