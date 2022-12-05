@@ -4,6 +4,7 @@ import 'package:customermanager/services/file/file_cloud_storage.dart';
 import 'package:customermanager/services/history/historybook.dart';
 import 'package:customermanager/services/product/productbook.dart';
 import 'package:customermanager/views/customer/add_new_customer_view.dart';
+import 'package:customermanager/views/customer/all_customer_list_view.dart';
 import 'package:customermanager/views/customer/customer_detail_view.dart';
 import 'package:customermanager/views/customer/navigation_pages/add_new_history_view.dart';
 import 'package:customermanager/views/homepage.dart';
@@ -40,22 +41,24 @@ Future<void> main() async {
                   create: (BuildContext context) => ProductBook()), 
     ],
     child: MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: homepageRoute,
+      initialRoute: authStateChangeRoute,
       routes: {
         // forgotPasswordRoute: (BuildContext context) => const DetailView(),
-        homepageRoute: (BuildContext context) => const HomePage(),
+        authStateChangeRoute: (BuildContext context) => const AuthStateChanges(),
         loginRoute: (BuildContext context) => const LoginView(),
         addNewCustomerRoute:(context) => const AddNewCustomerView(),
+        customerListRoute:(context) => const AllCustomerListView(),
         customerDetailRoute:(context) => const CustomerDetailView(),
         addNewHistoryRoute:(context) => const AddNewHistoryView(),
         productListRoute:(context) => const ProductListView(),
         addNewProductRoute:(context) => const AddNewProductView(),
         productDetailRoute:(context) => const ProductDetailView(),
-        customerListRoute:(context) => const Homepage(),
+        homepageRoute:(context) => const Homepage(),
         productSalesRoute:(context) => const SalesStatisticsView(),
          allHistoryRoute:(context) => const AllHistoryView(),
         // addNewCustomerRoute: (BuildContext context) => AddNewProductView(),

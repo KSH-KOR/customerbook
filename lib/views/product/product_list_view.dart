@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../services/file/const/cloud_directory_path.dart';
 import '../../services/product/model/product.dart';
+import '../../theme/appcolors.dart';
 import '../../widgets/widget_decoration_frame.dart';
 
 class ProductListView extends StatelessWidget {
@@ -17,6 +18,7 @@ class ProductListView extends StatelessWidget {
     final productBook = Provider.of<ProductBook>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryColor,
         title: const Text("Products"),
         actions: [
           IconButton(

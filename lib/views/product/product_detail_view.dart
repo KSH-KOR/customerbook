@@ -8,6 +8,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/product/model/product.dart';
+import '../../theme/appcolors.dart';
 import '../../widgets/helpers.dart';
 
 import 'package:intl/intl.dart' show DateFormat;
@@ -42,6 +43,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryColor,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () async {
@@ -153,24 +155,24 @@ class ContactInformationSheet extends StatelessWidget {
           const AddVerticalSpace(height: 20),
           InformationCard(
             title: "Product name",
-            contents: product.name ?? "no name",
+            contentsWidget: Text(product.name ?? "no name"),
           ),
           const AddVerticalSpace(height: 20),
           InformationCard(
             title: "Price:",
-            contents: product.price ?? "no data yet",
+            contentsWidget: Text(product.price ?? "no data yet"),
           ),
           const AddVerticalSpace(height: 20),
           InformationCard(
             title: "Description:",
-            contents: product.description ?? "no description",
+            contentsWidget: Text(product.description ?? "no description"),
           ),
           const AddVerticalSpace(height: 20),
           InformationCard(
               title: "last modified date:",
-              contents: DateFormat("yyyy-MM-dd").format(
+              contentsWidget: Text(DateFormat("yyyy-MM-dd").format(
                   DateTime.fromMicrosecondsSinceEpoch(
-                      product.lastModifiedDate.microsecondsSinceEpoch))),
+                      product.lastModifiedDate.microsecondsSinceEpoch)))),
         ],
       ),
     );

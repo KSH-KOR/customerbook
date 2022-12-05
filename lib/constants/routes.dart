@@ -1,8 +1,10 @@
-const homepageRoute = '/';
+const authStateChangeRoute = '/auth-state';
 const loginRoute = '/login';
 const forgotPasswordRoute = '/forgot-password';
 
-const customerListRoute = 'customer-list';
+const homepageRoute = '/homepage';
+
+const customerListRoute = '/customer-list';
 const customerDetailRoute = '/customer-detail';
 const addNewCustomerRoute = '/add-new-customer';
 const editCustomerInfoRoute = '/customer-detail/edit-customer-info';

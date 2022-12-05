@@ -51,9 +51,10 @@ class _AddNewCustomerViewState extends State<AddNewCustomerView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.primaryColor,
           title: const Text("Add new customer"),
           leading: IconButton(
-            icon: const Icon(Icons.cancel_outlined),
+            icon: const Icon(Icons.close),
             onPressed: () {
               Navigator.pop(context);
               fileCloudStorage.imagePath = null;

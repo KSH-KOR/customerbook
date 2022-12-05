@@ -12,7 +12,21 @@ class CustomerBook extends ChangeNotifier{
   final customerCollection =
          FirebaseFirestore.instance.collection(customerCollectionName);
   final List<Customer> _customerBook = [];
+  List<Customer> _searchedCustomerList = [];
   String? userId;
+
+  bool _isEditMode = false;
+  set isEditMode(bool newVal) {
+    _isEditMode = newVal;
+    notifyListeners();
+  }
+  bool get isEditMode => _isEditMode;
+
+  void setSearchCustomerList({String searchWord = ''}){
+    _searchedCustomerList = _customerBook.where((element) => element.name == null ? false : element.name!.toLowerCase().contains(searchWord.toLowerCase()),).toList();
+    notifyListeners();
+  }
+  get searchedCustomerList => _searchedCustomerList;
 
   CustomerDisplayOrder _dropdownValue = CustomerDisplayOrder.ascending;
   CustomerDisplayOrder get dropdownValue => _dropdownValue;

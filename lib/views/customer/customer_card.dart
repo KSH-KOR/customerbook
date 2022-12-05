@@ -22,7 +22,6 @@ class CustomerCard extends StatelessWidget {
         } else{
           await Navigator.of(context).pushNamed(customerDetailRoute, arguments: customer.customerId);
         }
-        
       },
       child: ListTile(
         contentPadding: EdgeInsets.zero,

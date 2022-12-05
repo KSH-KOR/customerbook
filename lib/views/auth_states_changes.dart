@@ -11,8 +11,8 @@ import '../services/auth/auth_provider.dart';
 import 'homepage.dart';
 import 'loginview.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class AuthStateChanges extends StatelessWidget {
+  const AuthStateChanges({super.key});
 
   @override
   Widget build(BuildContext context) {

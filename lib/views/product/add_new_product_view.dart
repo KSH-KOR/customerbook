@@ -53,8 +53,9 @@ class _AddNewProductViewState extends State<AddNewProductView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.primaryColor,
           leading: IconButton(
-            icon: const Icon(Icons.cancel_outlined),
+            icon: const Icon(Icons.close),
             onPressed: () => Navigator.pop(context),
           ),
         ),

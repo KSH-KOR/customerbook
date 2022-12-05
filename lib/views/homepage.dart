@@ -19,9 +19,9 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryColor,
         title: const Text("Customer Overview"),
         actions: [
           IconButton(
@@ -39,9 +39,9 @@ class Homepage extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: AppColors.primaryColor,
               ),
-              child: Text('Drawer Header'),
+              child: Text(''),
             ),
             ListTile(
               title: const Text('log out'),
@@ -78,11 +78,16 @@ class Homepage extends StatelessWidget {
               WidgetDecorationFrame(
                 maximumHeight: 300,
                 header: const Text("Recent Purchase"),
-                child: const PurchasesDatatable(listLengthLimit: 5,),
+                child: const PurchasesDatatable(
+                  listLengthLimit: 5,
+                ),
                 moreCallBackAction: () async {
-                  Provider.of<HistoryBook>(context, listen: false).fetchAll().then(
-                    (_) async => await Navigator.of(context).pushNamed(allHistoryRoute),
-                  );
+                  Provider.of<HistoryBook>(context, listen: false)
+                      .fetchAll()
+                      .then(
+                        (_) async => await Navigator.of(context)
+                            .pushNamed(allHistoryRoute),
+                      );
                 },
               ),
               const AddVerticalSpace(height: 20),
@@ -90,7 +95,10 @@ class Homepage extends StatelessWidget {
                 maximumHeight: 500,
                 header: const Text("customer list"),
                 child: const CustomerCardList(),
-                moreCallBackAction: () {},
+                moreCallBackAction: () async {
+                  Provider.of<CustomerBook>(context, listen: false).setSearchCustomerList(searchWord: '');
+                  await Navigator.of(context).pushNamed(customerListRoute);
+                },
               ),
             ],
           ),
@@ -99,10 +107,14 @@ class Homepage extends StatelessWidget {
     );
   }
 }
+
 class CustomerCardList extends StatelessWidget {
   const CustomerCardList({
     Key? key,
+    this.isSearchMode = false,
   }) : super(key: key);
+
+  final bool isSearchMode;
 
   @override
   Widget build(BuildContext context) {
@@ -117,12 +129,17 @@ class CustomerCardList extends StatelessWidget {
             ),
           )
         : ListView.separated(
-          physics: const ClampingScrollPhysics(),
-          shrinkWrap: true,
-            itemCount: customerBook.customerBook.length,
+            physics: const ClampingScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: isSearchMode
+                ? customerBook.searchedCustomerList.length
+                : customerBook.customerBook.length,
             separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
-              return CustomerCard(customer: customerBook.customerBook[index]);
+              return CustomerCard(
+                  customer: isSearchMode
+                      ? customerBook.searchedCustomerList[index]
+                      : customerBook.customerBook[index]);
             },
           );
   }

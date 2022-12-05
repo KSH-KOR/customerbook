@@ -109,6 +109,7 @@ class SalesStatisticsView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.primaryColor,
           title: const Text("Sales Statistics"),
         ),
         body: SingleChildScrollView(
